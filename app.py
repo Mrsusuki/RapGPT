@@ -1,17 +1,16 @@
 import joblib
 import numpy as np
-import spacy
 import streamlit as st
 
 
+# Cargar únicamente el modelo guardado
 @st.cache_resource
-def cargar_recursos():
-  nlp = spacy.load("es_core_news_md")
+def cargar_modelo():
   modelo = joblib.load("modelo_rap.pkl")
-  return nlp, modelo
+  return modelo
 
 
-nlp, modelo = cargar_recursos()
+modelo = cargar_modelo()
 
 # Caja de texto para que el usuario escriba
 frase_prueba = st.text_input(
