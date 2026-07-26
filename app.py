@@ -66,13 +66,13 @@ with st.sidebar:
   st.markdown("---")
   st.markdown("	Shoutout para GRMY TV.)")
   st.markdown("Basado en su mítico juego de preguntas de 'Rap o NO' para que Yibril no se mate la cabeza pensando, que no le da para mucho.")
-st.markdown("---")
-st.caption("Att: Mr. Susuki. El que sale de casa y entra igual. #FREEPACOSANZ")
+  st.markdown("---")
+  st.caption("Att: Mr. Susuki. El que sale de casa y entra igual. #FREEPACOSANZ")
 
 
 # --- CABECERA PRINCIPAL ---
-st.title("#### *¿Es rap o no es rap?*")
-st.markdown("'logo.png', use_container_width=True   ")
+st.title("*¿Es rap o no es rap?*")
+st.markdown("'ESRAP_logo.png', use_container_width=True")
 st.write("")
 
 
@@ -143,7 +143,7 @@ frases_no_rap = {
 
 # --- CUERPO PRINCIPAL ---
 with st.container():
-  st.markdown("### Compruebalo:")
+  st.markdown("### Testealo:")
   frase_prueba = st.text_input(
       "Escribe un objeto, acción o persona:",
       label_visibility="collapsed",
