@@ -10,10 +10,10 @@ import streamlit as st
 @st.cache_resource
 def cargar_nlp_y_modelo():
   try:
-    nlp = spacy.load("es_core_news_sm")
+    nlp = spacy.load("es_core_news_md")
   except OSError:
     os.system("python -m spacy download es_core_news_sm")
-    nlp = spacy.load("es_core_news_sm")
+    nlp = spacy.load("es_core_news_md")
 
   modelo = joblib.load("modelo_rap.pkl")
   return nlp, modelo
