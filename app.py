@@ -5,10 +5,15 @@ import spacy
 import streamlit as st
 
 
-# Función para asegurar que el modelo de spaCy está disponible en el servidor
 @st.cache_resource
 def cargar_recursos():
-  nlp = spacy.load("es_core_news_md")
+  try:
+    nlp = spacy.load("es_core_news_md")
+  except OSError:
+    # Si el servidor no lo tiene, lo descarga e instala de forma automática
+    os.system("python -m spacy download es_core_news_md")
+    nlp = spacy.load("es_core_news_md")
+
   modelo = joblib.load("modelo_rap_semantico.pkl")
   return nlp, modelo
 
