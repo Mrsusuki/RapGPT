@@ -5,20 +5,10 @@ import spacy
 import streamlit as st
 
 
-# Cargar spaCy de forma segura (usando el modelo pequeño para evitar fallos en la nube)
+# Cargar spaCy y el modelo directamente
 @st.cache_resource
 def cargar_nlp_y_modelo():
-  try:
-    nlp = spacy.load("es_core_news_md")
-  except OSError:
-    try:
-      nlp = spacy.load("es_core_news_sm")
-    except OSError:
-      import os
-
-      os.system("python -m spacy download es_core_news_sm")
-      nlp = spacy.load("es_core_news_sm")
-
+  nlp = spacy.load("es_core_news_sm")
   modelo = joblib.load("modelo_rap.pkl")
   return nlp, modelo
 
@@ -108,14 +98,10 @@ if st.button("Analizar"):
   if frase_prueba.strip() == "":
     st.warning("No has puesto nada, escribe algo puto vago.")
   else:
-    # 1. Convertir la frase del usuario a vector numérico igual que en el entrenamiento
     vector_prueba = obtener_vector(frase_prueba).reshape(1, -1)
-
-    # 2. Predecir usando el modelo cargado
     prediccion = modelo.predict(vector_prueba)
     probabilidades = modelo.predict_proba(vector_prueba)
 
-    # 3. Mostrar resultado en pantalla con Streamlit
     if prediccion[0] == 1:
       prob = probabilidades[0][1]
       if prob > 0.9:
