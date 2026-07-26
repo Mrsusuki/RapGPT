@@ -7,7 +7,7 @@ import streamlit as st
 
 # Configuración de la página (¡Debe ir al principio!)
 st.set_page_config(
-    page_title="RapGPT | Verificador de Real Rap. No FAKE SHIT",
+    page_title="ESRap | Verificador de Real Rap. No FAKE SHIT",
     page_icon="🎤",
     layout="centered",
     initial_sidebar_state="expanded",
