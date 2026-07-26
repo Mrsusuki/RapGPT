@@ -79,8 +79,7 @@ with st.sidebar:
 
 
 # --- CABECERA PRINCIPAL (IMAGEN MÁS GRANDE Y ARRIBA) ---
-# Columnas más estrechas en los lados [1, 6, 1] para que la imagen del centro crezca
-col1, col2, col3 = st.columns([1, 6, 1])
+col1, col2, col3 = st.columns([1.5, 4, 1.5])
 with col2:
   st.image("ESRAP_logo.png", use_container_width=True)
 
