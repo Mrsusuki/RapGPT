@@ -8,36 +8,12 @@ import streamlit as st
 # Función para asegurar que el modelo de spaCy está disponible en el servidor
 @st.cache_resource
 def cargar_recursos():
-  try:
-    nlp = spacy.load("es_core_news_md")
-  except OSError:
-    # Si Streamlit Cloud no lo tiene instalado, lo descarga automáticamente al arrancar
-    os.system("python -m spacy download es_core_news_md")
-    nlp = spacy.load("es_core_news_md")
-
+  nlp = spacy.load("es_core_news_md")
   modelo = joblib.load("modelo_rap_semantico.pkl")
   return nlp, modelo
 
 
 nlp, modelo = cargar_recursos()
-
-# Configuración de la página
-st.title("🎤 ¿Es RAP o no?")
-st.write(
-    "Introduce lo que quieres saber si es rap o no en opinión de un experto."
-)
-
-
-# Cargar spaCy y el modelo (usamos st.cache_resource para que cargue rápido)
-@st.cache_resource
-def cargar_recursos():
-  nlp = spacy.load("es_core_news_md")
-  modelo = joblib.load("modelo_rap.pkl")
-  return nlp, modelo
-
-
-nlp, modelo = cargar_recursos()
-
 # Caja de texto para que el usuario escriba
 frase_prueba = st.text_input(
     "Escribe un objeto, acción o persona:", "Ergo Pro"
