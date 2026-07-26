@@ -57,22 +57,22 @@ def obtener_vector(texto):
 
 # --- BARRA LATERAL (SIDEBAR) ---
 with st.sidebar:
-  st.header("Sobre RapGPT")
+  st.header("Sobre EsRap")
   st.write(
-      "Herramienta impulsada por Machine Learning (Regresión Logística +"
-      " spaCy) para medir científicamente si algo respira cultura de la calle"
-      " o no."
+      "¿Estás con un colega y te preguntas si algo es rap o no lo es? Esta es tu solución"
+      "algo es rap o no lo es? Esta es tu solución. Preguntale a RapGPT y te dará la respuesta."
+      "Entrenado con pila de datos para tener la mayor precisión y no confundiar a Yoel con Borja."
   )
   st.markdown("---")
-  st.markdown("### 🛠️ Tecnologías")
-  st.markdown("- Python & Streamlit\n- Scikit-Learn\n- spaCy (NLP)")
-  st.markdown("---")
-  st.caption("Hecho con pasión por el rap 🎤🔥")
+  st.markdown("	Shoutout para GRMY TV.)")
+  st.markdown("Basado en su mítico juego de preguntas de "Rap o NO" para que Yibril no se mate la cabeza pensando, que no le da para mucho.")
+st.markdown("---")
+  st.caption("Att: Mr. Susuki. El que sale de casa y entra igual. #FREEPACOSANZ")
 
 
 # --- CABECERA PRINCIPAL ---
-st.title("🎤 RapGPT")
-st.markdown("#### *¿Es rap o no es rap?*")
+st.title("#### *¿Es rap o no es rap?*")
+st.markdown(""logo.png", use_container_width=True   ")
 st.write("")
 
 
@@ -153,7 +153,7 @@ with st.container():
   col1, col2, col3 = st.columns([1, 2, 1])
   with col2:
     boton_analizar = st.button(
-        "🚀 Analizar", type="primary", use_container_width=True
+        "Analizar 🤯", type="primary", use_container_width=True
     )
 
 if boton_analizar:
