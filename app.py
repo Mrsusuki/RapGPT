@@ -7,7 +7,7 @@ import streamlit as st
 
 # Configuración de la página (¡Debe ir al principio!)
 st.set_page_config(
-    page_title="RapGPT | Verificador de Real Rap",
+    page_title="RapGPT | Verificador de Real Rap. No FAKE SHIT",
     page_icon="🎤",
     layout="centered",
     initial_sidebar_state="expanded",
@@ -42,7 +42,7 @@ def cargar_nlp_y_modelo():
   return nlp, modelo
 
 
-with st.spinner("Cargando el flow y los modelos de IA... 🎧"):
+with st.spinner("Espera que me estoy acabando el piti. No tardo."):
   nlp, modelo = cargar_nlp_y_modelo()
 
 
@@ -72,7 +72,7 @@ with st.sidebar:
 
 # --- CABECERA PRINCIPAL ---
 st.title("🎤 RapGPT")
-st.markdown("#### *¿Es esto Real Rap o una absoluta milonga?*")
+st.markdown("#### *¿Es rap o no es rap?*")
 st.write("")
 
 
@@ -143,10 +143,9 @@ frases_no_rap = {
 
 # --- CUERPO PRINCIPAL ---
 with st.container():
-  st.markdown("### Introduce un concepto para evaluar:")
+  st.markdown("### Compruebalo:")
   frase_prueba = st.text_input(
       "Escribe un objeto, acción o persona:",
-      value="Ergo Pro",
       label_visibility="collapsed",
   )
 
@@ -154,14 +153,14 @@ with st.container():
   col1, col2, col3 = st.columns([1, 2, 1])
   with col2:
     boton_analizar = st.button(
-        "🚀 Analizar Flow", type="primary", use_container_width=True
+        "🚀 Analizar", type="primary", use_container_width=True
     )
 
 if boton_analizar:
   if frase_prueba.strip() == "":
     st.warning("⚠️ No has puesto nada, escribe algo puto vago.")
   else:
-    with st.spinner("Analizando códigos de barras y métricas de calle..."):
+    with st.spinner("Preguntandole a Cecilio G a ver que opina. Si tarda es que aún no ha vuelto de fiesta."):
       vector_prueba = obtener_vector(frase_prueba).reshape(1, -1)
       prediccion = modelo.predict(vector_prueba)
       probabilidades = modelo.predict_proba(vector_prueba)
@@ -178,17 +177,17 @@ if boton_analizar:
         )
       elif prob > 0.8:
         nivel, frase_elegida = (
-            "Nivel: Bastante Calle (Medio-Alto)",
+            "Nivel: Bastante rap (Medio-Alto)",
             random.choice(frases_rap["medio_alto"]),
         )
       elif prob > 0.7:
         nivel, frase_elegida = (
-            "Nivel: Aprobado por los pelos (Medio)",
+            "Nivel: medio rap (Medio)",
             random.choice(frases_rap["medio"]),
         )
       elif prob > 0.6:
         nivel, frase_elegida = (
-            "Nivel: Dudoso (Bajo-Medio)",
+            "Nivel: Poco rap (Bajo-Medio)",
             random.choice(frases_rap["bajo_medio"]),
         )
       else:
@@ -198,34 +197,34 @@ if boton_analizar:
         )
 
       st.success(
-          f"### ¡SÍ ES RAP! 🎤\n**{nivel}** (Confianza:"
+          f"### ¡ES RAP! 🎤\n**{nivel}** (Confianza:"
           f" `{prob:.0%}`)\n\n> *{frase_elegida}*"
       )
     else:
       prob = probabilidades[0][0]
       if prob > 0.9:
         nivel, frase_elegida = (
-            "Nivel: Anti-Rap Absoluto (Alto)",
+            "Nivel: Anti-rap de manual (Alto)",
             random.choice(frases_no_rap["alto"]),
         )
       elif prob > 0.8:
         nivel, frase_elegida = (
-            "Nivel: Cero Calle (Medio-Alto)",
+            "Nivel: No es rap, cabrón (Medio-Alto)",
             random.choice(frases_no_rap["medio_alto"]),
         )
       elif prob > 0.7:
         nivel, frase_elegida = (
-            "Nivel: Flojito (Medio)",
+            "Nivel: No es rap (Medio)",
             random.choice(frases_no_rap["medio"]),
         )
       elif prob > 0.6:
         nivel, frase_elegida = (
-            "Nivel: Bastante Lejos (Bajo-Medio)",
+            "Nivel: No es rap (Bajo-Medio)",
             random.choice(frases_no_rap["bajo_medio"]),
         )
       else:
         nivel, frase_elegida = (
-            "Nivel: En la cuerda floja",
+            "Nivel:  Lo justo para que un tío de la castellana te mire mal",
             random.choice(frases_no_rap["limbo"]),
         )
 
