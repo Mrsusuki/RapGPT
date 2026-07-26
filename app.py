@@ -71,7 +71,7 @@ with st.sidebar:
 
 
 # --- CABECERA PRINCIPAL ---
-col1, col2, col3 = st.columns([2 1.4, 2])
+col1, col2, col3 = st.columns([2, 1.4, 2])
 with col2:
   st.image("ESRAP_logo.png", use_container_width=True)
 
