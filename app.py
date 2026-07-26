@@ -71,18 +71,13 @@ with st.sidebar:
 
 
 # --- CABECERA PRINCIPAL ---
-col1, col2, col3 = st.columns([2.5, 1, 2.5])
+col1, col2, col3 = st.columns(1.8, 1.4, 1.8)
 with col2:
   st.image("ESRAP_logo.png", use_container_width=True)
 
 # Usamos font-size en HTML para reducir el tamaño del título y el subtítulo
 st.markdown(
-    "<h2 style='text-align: center; margin-bottom: 0px;'>🎤 RapGPT</h2>",
-    unsafe_allow_html=True,
-)
-st.markdown(
-    "<p style='text-align: center; color: #888; font-size: 16px;'><em>¿Es esto"
-    " Real Rap o una absoluta milonga?</em></p>",
+    "<h2 style='text-align: center; margin-bottom: 0px;'>¿Es rap o no es rap?</h2>",
     unsafe_allow_html=True,
 )
 st.write("")
