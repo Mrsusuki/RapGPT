@@ -7,7 +7,7 @@ import streamlit as st
 @st.cache_resource
 def cargar_recursos():
   nlp = spacy.load("es_core_news_md")
-  modelo = joblib.load("modelo_rap_semantico.pkl")
+  modelo = joblib.load("modelo_rap.pkl")
   return nlp, modelo
 
 
