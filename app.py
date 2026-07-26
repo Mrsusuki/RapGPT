@@ -1,4 +1,3 @@
-import os
 import joblib
 import numpy as np
 import spacy
@@ -7,18 +6,13 @@ import streamlit as st
 
 @st.cache_resource
 def cargar_recursos():
-  try:
-    nlp = spacy.load("es_core_news_md")
-  except OSError:
-    # Si el servidor no lo tiene, lo descarga e instala de forma automática
-    os.system("python -m spacy download es_core_news_md")
-    nlp = spacy.load("es_core_news_md")
-
+  nlp = spacy.load("es_core_news_md")
   modelo = joblib.load("modelo_rap_semantico.pkl")
   return nlp, modelo
 
 
 nlp, modelo = cargar_recursos()
+
 # Caja de texto para que el usuario escriba
 frase_prueba = st.text_input(
     "Escribe un objeto, acción o persona:", "Ergo Pro"
