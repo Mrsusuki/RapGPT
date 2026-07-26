@@ -54,29 +54,29 @@ if st.button("Analizar"):
     prediccion = modelo.predict(vector_prueba)
     probabilidades = modelo.predict_proba(vector_prueba)
 
-   frases_rap = {
-    "alto": [
-        "🔥 Más rap que gastarse el primer sueldo en una cadena.",
-        "🔥 Más rap como escucharse una instrumental de Midas Alonso a las tres de la mañana.",
-        "🔥 Das real rap",
-    ],
-    "medio_alto": [
-        "🔥 Wat a time to be alive. Da shi es rap.",
-        "🔥 Lo haría el yonki de mi barrio, asi que si es rap.",
-    ],
-    "medio": [
-        "🔥 ¡Es rap! Pero Cecilio G te diría que no lo suficiente.",
-        "🔥 Lleva rap en la sangre, aunque le falta calle.",
-    ],
-    "bajo_medio": [
-        "🔥 Es más que rap comer en el kebab de Omar Montes, pero tampoco por mucho.",
-        "🔥 Es rap pero muy tomado con pinzas, como un 5.0 en una recuperación.",
-    ],
-    "limbo": [
-        "Si me apuntas con una pistola diría que es rap, pero tengo mis dudas. Depende la persona.",
-        "Podría ser rap si tienes mucha fe y poca cultura.",
-    ],
-}
+	frases_rap = {
+   	"alto": [
+        	"🔥 Más rap que gastarse el primer sueldo en una cadena.",
+        	"🔥 Más rap como escucharse una instrumental de Midas Alonso a las tres de la mañana.",
+        	"🔥 Das real rap",
+    	],
+    	"medio_alto": [
+        	"🔥 Wat a time to be alive. Da shi es rap.",
+        	"🔥 Lo haría el yonki de mi barrio, asi que si es rap.",
+    	],
+    	"medio": [
+        	"🔥 ¡Es rap! Pero Cecilio G te diría que no lo suficiente.",
+        	"🔥 Lleva rap en la sangre, aunque le falta calle.",
+    	],
+    	"bajo_medio": [
+        	"🔥 Es más que rap comer en el kebab de Omar Montes, pero tampoco por mucho.",
+        	"🔥 Es rap pero muy tomado con pinzas, como un 5.0 en una recuperación.",
+    	],
+    	"limbo": [
+        	"Si me apuntas con una pistola diría que es rap, pero tengo mis dudas. Depende la persona.",
+        	"Podría ser rap si tienes mucha fe y poca cultura.",
+    	],
+	}
 
 frases_no_rap = {
     "alto": [
