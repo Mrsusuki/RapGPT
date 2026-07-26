@@ -1,5 +1,5 @@
-import random
 import os
+import random
 import joblib
 import numpy as np
 import spacy
@@ -13,7 +13,7 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# Estilos CSS personalizados para un acabado más limpio
+# Estilos CSS personalizados para subir el contenido y estilizar
 st.markdown("""
     <style>
     .main {
@@ -21,6 +21,10 @@ st.markdown("""
     }
     .stTextInput input {
         border-radius: 10px;
+    }
+    /* Sube todo el contenido hacia arriba reduciendo el margen superior */
+    .block-container {
+        padding-top: 1rem; 
     }
     </style>
 """, unsafe_allow_html=True)
@@ -59,25 +63,31 @@ def obtener_vector(texto):
 with st.sidebar:
   st.header("Sobre EsRap")
   st.write(
-      "¿Estás con un colega y te preguntas si algo es rap o no lo es? Esta es tu solución"
-      "algo es rap o no lo es? Esta es tu solución. Preguntale a RapGPT y te dará la respuesta."
-      "Entrenado con pila de datos para tener la mayor precisión y no confundiar a Yoel con Borja."
+      "¿Estás con un colega y te preguntas si algo es rap o no lo es? Esta es tu"
+      " solución. Preguntale a RapGPT y te dará la respuesta. Entrenado con"
+      " pila de datos para tener la mayor precisión y no confundiar a Yoel"
+      " con Borja."
   )
   st.markdown("---")
-  st.markdown("	Shoutout para GRMY TV.)")
-  st.markdown("Basado en su mítico juego de preguntas de 'Rap o NO' para que Yibril no se mate la cabeza pensando, que no le da para mucho.")
+  st.markdown("Shoutout para GRMY TV.")
+  st.markdown(
+      "Basado en su mítico juego de preguntas de 'Rap o NO' para que Yibril no"
+      " se mate la cabeza pensando, que no le da para mucho."
+  )
   st.markdown("---")
   st.caption("Att: Mr. Susuki. El que sale de casa y entra igual. #FREEPACOSANZ")
 
 
-# --- CABECERA PRINCIPAL ---
-col1, col2, col3 = st.columns([2.4, 1.4, 2.4])
+# --- CABECERA PRINCIPAL (IMAGEN MÁS GRANDE Y ARRIBA) ---
+# Columnas más estrechas en los lados [1, 6, 1] para que la imagen del centro crezca
+col1, col2, col3 = st.columns([1, 6, 1])
 with col2:
   st.image("ESRAP_logo.png", use_container_width=True)
 
-# Usamos font-size en HTML para reducir el tamaño del título y el subtítulo
+# Título ajustado y más pegado a la imagen
 st.markdown(
-    "<h2 style='text-align: center; margin-bottom: 0px;'>¿Es rap o no es rap?</h2>",
+    "<h2 style='text-align: center; margin-top: -10px; margin-bottom: 0px;'>¿Es"
+    " rap o no es rap?</h2>",
     unsafe_allow_html=True,
 )
 st.write("")
@@ -167,7 +177,10 @@ if boton_analizar:
   if frase_prueba.strip() == "":
     st.warning("⚠️ No has puesto nada, escribe algo puto vago.")
   else:
-    with st.spinner("Preguntandole a Cecilio G a ver que opina. Si tarda es que aún no ha vuelto de fiesta."):
+    with st.spinner(
+        "Preguntandole a Cecilio G a ver que opina. Si tarda es que aún no ha"
+        " vuelto de fiesta."
+    ):
       vector_prueba = obtener_vector(frase_prueba).reshape(1, -1)
       prediccion = modelo.predict(vector_prueba)
       probabilidades = modelo.predict_proba(vector_prueba)
