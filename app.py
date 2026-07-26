@@ -69,12 +69,11 @@ if st.button("Analizar"):
         "🔥 Lleva rap en la sangre, aunque le falta calle.",
     ],
     "bajo_medio": [
-            "🔥 Es más que rap comer en el kebab de Omar Montes, pero tampoco por mucho.",
+        "🔥 Es más que rap comer en el kebab de Omar Montes, pero tampoco por mucho.",
         "🔥 Es rap pero muy tomado con pinzas, como un 5.0 en una recuperación.",
     ],
     "limbo": [
-            "Si me apuntas con una pistola diría que es rap, pero tengo mis"
-            " dudas. Depende la persona.",
+        "Si me apuntas con una pistola diría que es rap, pero tengo mis dudas. Depende la persona.",
         "Podría ser rap si tienes mucha fe y poca cultura.",
     ],
 }
@@ -86,9 +85,7 @@ frases_no_rap = {
         "❌ No rap. Ofende que hayas pensado que podía serlo",
     ],
     "medio_alto": [
-        (
-            "❌ Igual de rap que llamarse Bizarrap y hacer una session con Maluma. NADA."
-        ),
+	"❌ Igual de rap que llamarse Bizarrap y hacer una session con Maluma. NADA.",
         "❌ No es rap ni para un cayetano.",
     ],
     "medio": [
