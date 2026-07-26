@@ -39,22 +39,18 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-# Cargar spaCy y el modelo de forma robusta
+# Cargar spaCy y el modelo de forma robust
 @st.cache_resource
 def cargar_nlp_y_modelo():
   try:
     nlp = spacy.load("es_core_news_md")
   except OSError:
-    try:
-      os.system("python -m spacy download es_core_news_sm")
-      nlp = spacy.load("es_core_news_sm")
-    except OSError:
-      nlp = spacy.load("es_core_news_md")
+    # Si no lo encuentra, lo descarga explícitamente desde pip usando el modelo MD
+    os.system("python -m spacy download es_core_news_md")
+    nlp = spacy.load("es_core_news_md")
 
   modelo = joblib.load("modelo_rap.pkl")
   return nlp, modelo
-
-
 with st.spinner("Espera que me estoy acabando el piti. No tardo."):
   nlp, modelo = cargar_nlp_y_modelo()
 
