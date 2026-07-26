@@ -89,11 +89,11 @@ if st.button("Analizar"):
     # Si tu modelo requiere un vectorizador previo guardado, cámbialo aquí.
     try:
       # Si el modelo acepta texto directo:
-      prediccion = modelo.predict([frase_prueba])
-      probabilidades = modelo.predict_proba([frase_prueba])
+      prediccion = modelo.predict([[frase_prueba]])
+      probabilidades = modelo.predict_proba([[frase_prueba]])
     except Exception:
       # Si por el contrario espera un array (por si acaso):
-      vector_prueba = np.array([frase_prueba])
+      vector_prueba = np.array([[frase_prueba]])
       prediccion = modelo.predict(vector_prueba)
       probabilidades = modelo.predict_proba(vector_prueba)
 
