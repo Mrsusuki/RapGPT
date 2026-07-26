@@ -1,14 +1,20 @@
 import random
+import os
 import joblib
 import numpy as np
 import spacy
 import streamlit as st
 
 
-# Cargar spaCy y el modelo directamente
+# Cargar spaCy y el modelo de forma robusta
 @st.cache_resource
 def cargar_nlp_y_modelo():
-  nlp = spacy.load("es_core_news_sm")
+  try:
+    nlp = spacy.load("es_core_news_sm")
+  except OSError:
+    os.system("python -m spacy download es_core_news_sm")
+    nlp = spacy.load("es_core_news_sm")
+
   modelo = joblib.load("modelo_rap.pkl")
   return nlp, modelo
 
