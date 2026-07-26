@@ -1,16 +1,39 @@
 import random
 import joblib
 import numpy as np
+import spacy
 import streamlit as st
 
 
-# Cargar el modelo guardado
+# Cargar spaCy de forma segura (usando el modelo pequeño para evitar fallos en la nube)
 @st.cache_resource
-def cargar_modelo():
-  return joblib.load("modelo_rap.pkl")
+def cargar_nlp_y_modelo():
+  try:
+    nlp = spacy.load("es_core_news_md")
+  except OSError:
+    try:
+      nlp = spacy.load("es_core_news_sm")
+    except OSError:
+      import os
+
+      os.system("python -m spacy download es_core_news_sm")
+      nlp = spacy.load("es_core_news_sm")
+
+  modelo = joblib.load("modelo_rap.pkl")
+  return nlp, modelo
 
 
-modelo = cargar_modelo()
+nlp, modelo = cargar_nlp_y_modelo()
+
+
+# Misma función que usaste para entrenar el modelo
+def obtener_vector(texto):
+  doc = nlp(texto)
+  if doc.has_vector:
+    return doc.vector
+  else:
+    return np.zeros(nlp.vocab.vectors_length)
+
 
 # Caja de texto para que el usuario escriba
 frase_prueba = st.text_input(
@@ -85,19 +108,14 @@ if st.button("Analizar"):
   if frase_prueba.strip() == "":
     st.warning("No has puesto nada, escribe algo puto vago.")
   else:
-    # Vectorización directa con TF-IDF / Modelo (asumiendo que tu pipeline procesa texto directamente)
-    # Si tu modelo requiere un vectorizador previo guardado, cámbialo aquí.
-    try:
-      # Si el modelo acepta texto directo:
-      prediccion = modelo.predict([[frase_prueba]])
-      probabilidades = modelo.predict_proba([[frase_prueba]])
-    except Exception:
-      # Si por el contrario espera un array (por si acaso):
-      vector_prueba = np.array([[frase_prueba]])
-      prediccion = modelo.predict(vector_prueba)
-      probabilidades = modelo.predict_proba(vector_prueba)
+    # 1. Convertir la frase del usuario a vector numérico igual que en el entrenamiento
+    vector_prueba = obtener_vector(frase_prueba).reshape(1, -1)
 
-    # Mostrar resultado en pantalla con Streamlit
+    # 2. Predecir usando el modelo cargado
+    prediccion = modelo.predict(vector_prueba)
+    probabilidades = modelo.predict_proba(vector_prueba)
+
+    # 3. Mostrar resultado en pantalla con Streamlit
     if prediccion[0] == 1:
       prob = probabilidades[0][1]
       if prob > 0.9:
