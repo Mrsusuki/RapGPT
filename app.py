@@ -41,7 +41,7 @@ frases_rap = {
     "alto": [
         "🔥 Más rap que gastarse el primer sueldo en una cadena.",
         (
-            "🔥 Más rap como escucharse una instrumental de Midas Alonso a las"
+            "🔥 Más rap que escucharse una instrumental de Midas Alonso a las"
             " tres de la mañana."
         ),
         "🔥 Das real rap",
