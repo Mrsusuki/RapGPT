@@ -7,7 +7,7 @@ import streamlit as st
 
 # Configuración de la página (¡Debe ir al principio!)
 st.set_page_config(
-    page_title="ESRap | Verificador de Real Rap. No FAKE SHIT",
+    page_title="esrapgpt | Verificador de Real Rap. No FAKE SHIT",
     page_icon="🎤",
     layout="centered",
     initial_sidebar_state="expanded",
@@ -84,7 +84,7 @@ with st.sidebar:
       " se mate la cabeza pensando, que no le da para mucho."
   )
   st.markdown("---")
-  st.caption("Att: Mr. Susuki. El que sale de casa y entra igual. #FREEPACOSANZ")
+  st.caption("Att: Mr. Susuki. El que no le tiene miedo a los flashes. #FREEPACOSANZ")
 
 
 # --- CABECERA PRINCIPAL (IMAGEN AJUSTADA Y ARRIBA) ---
@@ -252,7 +252,7 @@ if boton_analizar:
         )
       else:
         nivel, frase_elegida = (
-            "Nivel:  Lo justo para que un tío de la castellana te mire mal",
+            "Nivel:  Lo justo para que un tío de la Castellana te mire mal",
             random.choice(frases_no_rap["limbo"]),
         )
 
