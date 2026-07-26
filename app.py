@@ -72,7 +72,7 @@ with st.sidebar:
 
 # --- CABECERA PRINCIPAL ---
 st.title("*¿Es rap o no es rap?*")
-st.image("ESRAP_logo.png", use_container_width=True")
+st.image("ESRAP_logo.png", use_container_width=True)
 st.write("")
 
 
