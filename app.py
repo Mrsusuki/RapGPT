@@ -67,7 +67,7 @@ with st.sidebar:
   st.markdown("	Shoutout para GRMY TV.)")
   st.markdown("Basado en su mítico juego de preguntas de 'Rap o NO' para que Yibril no se mate la cabeza pensando, que no le da para mucho.")
 st.markdown("---")
-  st.caption("Att: Mr. Susuki. El que sale de casa y entra igual. #FREEPACOSANZ")
+st.caption("Att: Mr. Susuki. El que sale de casa y entra igual. #FREEPACOSANZ")
 
 
 # --- CABECERA PRINCIPAL ---
