@@ -72,7 +72,7 @@ st.caption("Att: Mr. Susuki. El que sale de casa y entra igual. #FREEPACOSANZ")
 
 # --- CABECERA PRINCIPAL ---
 st.title("#### *¿Es rap o no es rap?*")
-st.markdown(""logo.png", use_container_width=True   ")
+st.markdown("'logo.png', use_container_width=True   ")
 st.write("")
 
 
