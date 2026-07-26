@@ -13,7 +13,7 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# Estilos CSS personalizados para subir el contenido y estilizar
+# Estilos CSS personalizados para el diseño, el logo y renombrar el botón del menú
 st.markdown("""
     <style>
     .main {
@@ -25,6 +25,15 @@ st.markdown("""
     /* Sube todo el contenido hacia arriba reduciendo el margen superior */
     .block-container {
         padding-top: 1rem; 
+    }
+    
+    /* --- PERSONALIZAR EL BOTÓN DEL MENÚ DE LA BARRA LATERAL --- */
+    /* Añade la palabra "Menú" al botón de despliegue de la barra lateral si se desea */
+    [data-testid="collapsedControl"]::after {
+        content: " Menú";
+        font-weight: bold;
+        font-size: 14px;
+        color: #888;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -78,7 +87,7 @@ with st.sidebar:
   st.caption("Att: Mr. Susuki. El que sale de casa y entra igual. #FREEPACOSANZ")
 
 
-# --- CABECERA PRINCIPAL (IMAGEN MÁS GRANDE Y ARRIBA) ---
+# --- CABECERA PRINCIPAL (IMAGEN AJUSTADA Y ARRIBA) ---
 col1, col2, col3 = st.columns([1.5, 4, 1.5])
 with col2:
   st.image("ESRAP_logo.png", use_container_width=True)
@@ -216,8 +225,8 @@ if boton_analizar:
         )
 
       st.success(
-          f"### ¡ES RAP! 🎤\n**{nivel}** (Confianza:"
-          f" `{prob:.0%}`)\n\n> *{frase_elegida}*"
+          f"### ¡ES RAP!\n**{nivel}** (Confianza:"
+          f")\n\n> *{frase_elegida}*"
       )
     else:
       prob = probabilidades[0][0]
@@ -249,9 +258,9 @@ if boton_analizar:
 
       st.error(
           f"### NO ES RAP ❌\n**{nivel}** (Confianza:"
-          f" `{prob:.0%}`)\n\n> *{frase_elegida}*"
+          f")\n\n> *{frase_elegida}*"
       )
 
     st.metric(
-        label="Grado de certeza del modelo", value=f"{max(probabilidades[0]):.1%}"
+        label="Grado de certeza de la IA", value=f"{max(probabilidades[0]):.1%}"
     )
